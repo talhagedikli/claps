@@ -4,8 +4,9 @@
 #macro display			global.__display
 #macro camera			global.__camera
 
-#macro GAME_RESOLUTION	new Vector2(320, 180)
-#macro WINDOW_SCALE		4
+#macro GAME_RESOLUTION	vec2(640, 360)
+#macro GUI_RESOLUTION	vec2(1280, 720)
+#macro WINDOW_SCALE		2
 
 global.__camera = 
 {
@@ -15,11 +16,11 @@ global.__camera =
 	y : camera_get_view_y(view),
 	GetPos : function()
 	{
-		return new Vector2(camera_get_view_x(view), camera_get_view_y(view));
+		return vec2(camera_get_view_x(view), camera_get_view_y(view));
 	},
 	GetSize : function()
 	{
-		return new Vector2(camera_get_view_width(view), camera_get_view_height(view));
+		return vec2(camera_get_view_width(view), camera_get_view_height(view));
 	},
 	SetPos : function(_x, _y)
 	{
@@ -38,36 +39,43 @@ global.__gui =
 {
 	width : display_get_gui_width(),
 	height : display_get_gui_height(),
-	center : new Vector2(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5),
+	center : vec2(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5),
 	GetCenter : function()
 	{
-		return new Vector2(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5);	
+		return vec2(display_get_gui_width() * 0.5, display_get_gui_height() * 0.5);	
 	},
 	GetSize : function()
 	{
-		return new Vector2(display_get_gui_width(), display_get_gui_height());
+		return vec2(display_get_gui_width(), display_get_gui_height());
 	},
-	SetSize : function(_w = GAME_RESOLUTION.x, _h = GAME_RESOLUTION.y)
+	SetSize : function(_w = GUI_RESOLUTION.x, _h = GUI_RESOLUTION.y)
 	{
 		display_set_gui_size(_w, _h);
 		width = _w;
 		height = _h;
-		center = new Vector2(width * 0.5, height * 0.5);
-	}
+		center = vec2(width * 0.5, height * 0.5);
+	},
+	ResetSize : function(_w = GAME_RESOLUTION.x, _h = GAME_RESOLUTION.y)
+	{
+		display_set_gui_size(_w, _h);
+		width = _w;
+		height = _h;
+		center = vec2(width * 0.5, height * 0.5);
+	},
 }
 global.__window = 
 {
 	fullscreen : false,
 	width : window_get_width(),
 	height: window_get_height(),	
-	center: new Vector2(window_get_width() * .5, window_get_height() * .5),
+	center: vec2(window_get_width() * .5, window_get_height() * .5),
 	GetCenter : function()
 	{
-		return new Vector2(window_get_width() * .5, window_get_height() * .5);
+		return vec2(window_get_width() * .5, window_get_height() * .5);
 	},
 	GetSize : function()
 	{
-		return new Vector2(window_get_width(), window_get_height());
+		return vec2(window_get_width(), window_get_height());
 	},
 	SetSize : function(w, h, fs)
 	{
@@ -100,17 +108,17 @@ global.__display =
 	center	: { x : display_get_width()*.5, y : display_get_height()*.5 },
 	GetSize : function()
 	{
-		return new Vector2(display_get_width(), display_get_height());
+		return vec2(display_get_width(), display_get_height());
 	},
 	GetCenter : function()
 	{
-		return new Vector2(display_get_width()*.5, display_get_height()*.5);
+		return vec2(display_get_width()*.5, display_get_height()*.5);
 	}
 }
 function camera_shake(_time, _magnitude, _fade = _magnitude)
 {
 	/// @func Shake(time, magnitude, *fade)
-	var co = Control.Manager.Cam.id;
+	var co = Control.Cm.id;
 	co.shakeTime		= _time;
 	co.shakeMagnitude	= _magnitude;
 	co.shakeFade		= _fade;

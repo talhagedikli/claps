@@ -1,3 +1,5 @@
+#macro GRID_WIDTH 32
+#macro GRID_HEIGHT 32
 log("-----------------------------------", "Game Started");
 // Make sure i am created firs
 if (instance_number(object_index) > 1)
@@ -6,12 +8,6 @@ if (instance_number(object_index) > 1)
   instance_destroy();
   exit;
 }
-here;
-global.gpClock = new iota_clock();
-global.gpClock.set_update_frequency(60);
-
-global.uiClock	= new iota_clock();
-global.uiClock.set_update_frequency(60);
 
 Cm			= instance_create_layer(x, y, layer, objCamera);
 Sl			= instance_create_layer(x, y, layer, objSaveManager);
@@ -40,7 +36,6 @@ GameRestart = function()
 	log("-----------------------------------", "Game Restarted");
 	game_restart();
 }
-
 
 
 

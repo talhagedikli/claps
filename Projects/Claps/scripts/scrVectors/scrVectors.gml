@@ -1,6 +1,6 @@
 #macro vec2 new Vector2
-#macro VECTOR2_ZERO		new Vector2(0)
-#macro VECTOR2_RANDOM	new Vector2(lengthdir_x(1, random(360), lengthdir_y(1, random(360))
+#macro VECTOR2_ZERO		vec2(0)
+#macro VECTOR2_RANDOM	vec2(lengthdir_x(1, random(360), lengthdir_y(1, random(360))
 function Vector2(_x = undefined, _y = _x) constructor
 {
 	self.x	= _x;
@@ -259,7 +259,7 @@ function Vector2(_x = undefined, _y = _x) constructor
 
 	static toString = function()
 	{
-	    return ("{" + string(x) + ", " + string(y) + "}");
+	    return ("{ " + string(x) + ", " + string(y) + " }");
 	}
 	
 	

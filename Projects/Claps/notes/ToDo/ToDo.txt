@@ -1,6 +1,3 @@
-- Auto Particle Emitter
-- Particle system rework
-- camera rework
 - tilemap_get() and tilemap_set()
 - understand tiles
 - understand surfaces

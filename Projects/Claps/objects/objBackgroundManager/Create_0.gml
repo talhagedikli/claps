@@ -6,8 +6,8 @@ CheckRoom = function()
 		state.change(room_get_name(room));
 	}
 }
-state = new SnowState(room_get_name(rTitle));
-state.add(room_get_name(rTitle), {	// ----------TITLE
+state = new SnowState(room_get_name(rZero));
+state.add(room_get_name(rZero), {	// ----------TITLE
 	enter: function() 
 	{
 		if (!instance_exists(objTitleMenu)) instance_create_layer(x, y, layer, objTitleMenu);
@@ -20,7 +20,7 @@ state.add(room_get_name(rTitle), {	// ----------TITLE
 	}
 });
 	
-state.add(room_get_name(rWorld), {	// ----------WORLD
+state.add(room_get_name(rOne), {	// ----------WORLD
 	enter: function() 
 	{
 	},

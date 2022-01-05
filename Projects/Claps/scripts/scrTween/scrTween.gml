@@ -1,7 +1,5 @@
-// Tweens V2
 #macro TWEENS	global.__tweens
 #macro tween	new Tween
-
 global.__tweens = [];
 
 
@@ -15,7 +13,7 @@ function run_all_tweens()
 	}	
 }
 
-function Tween(_type = TweenType.Linear, _start = 0, _end = 0, _dur = 0, _autostart = false) constructor
+function Tween(_type = TweenType.Linear, _start = 0, _end = 0, _dur = 0, _autostart = false, _ticksize = 1) constructor
 {
 	enum TweenType
 	{ // Channel indexes
@@ -68,10 +66,9 @@ function Tween(_type = TweenType.Linear, _start = 0, _end = 0, _dur = 0, _autost
 	
 	array_push(TWEENS, self);
 
-	static Start = function(_start, _end, _duration, _ticksize = 1, _loop = false)
+	static Start = function(_start = y1, _end = y2, _duration = duration, _loop = false)
 	{
 		active		= true;
-		y1			= _end;
 		y1			= _start;
 		y2			= _end;
 		duration	= _duration;
@@ -130,15 +127,9 @@ function Tween(_type = TweenType.Linear, _start = 0, _end = 0, _dur = 0, _autost
 	{
 		return active;
 	}
-	static Pause = function()
+	static SetActive = function(_active)
 	{
-		active = false;
-		return self;
-	}
-	static Resume = function()
-	{
-		active = true;
-		return self;
+		active = _active;
 	}
 	static SeekTime = function(_time)
 	{
@@ -155,6 +146,7 @@ function Tween(_type = TweenType.Linear, _start = 0, _end = 0, _dur = 0, _autost
 		if (done)
 		{
 			_func();
+			Stop();
 		}		
 	}
 	// global.gpClock.add_cycle_method(function() 

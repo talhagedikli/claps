@@ -60,6 +60,7 @@ function Timer(_duration, _loop = false, _autostart = false) constructor
 		if (done)
 		{
 			_func();
+			Stop();
 			if (loop) self.Reset();
 		}
 		return self;
@@ -77,7 +78,7 @@ function Timer(_duration, _loop = false, _autostart = false) constructor
 	{
 		time	= 0;
 		active	= false;
-		done	= true;
+		done	= false;
 		return self;
 	}
 	static SetActive = function(_active)

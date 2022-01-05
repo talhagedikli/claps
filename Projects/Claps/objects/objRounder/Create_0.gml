@@ -1,1 +1,0 @@
-sprite_index = choose(spr8, spr16, sprWhiteBlock);

@@ -28,8 +28,8 @@
 
 
 #region// Colours
-#macro C_CRIMSON		make_color_rgb(184, 15, 10)
-#macro C_DARKCHARCOAL	make_color_rgb(51, 51, 51)
-#macro C_ONYX			$0f0f0f
-#macro C_RANDOM			make_colour_hsv(irandom(255), irandom(255), irandom(255))
+#macro c_random			make_colour_hsv(irandom(255), irandom(255), irandom(255))
+#macro c_crimson		make_color_rgb(184, 15, 10)
+#macro c_onyx			$0f0f0f
+#macro c_skyblue		$e6d8ad
 #endregion

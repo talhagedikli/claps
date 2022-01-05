@@ -1,6 +1,6 @@
-#region Foreach
+//#region Foreach
 //#macro as , function
-///// @function foreach(array as (element, [index])
+/////// @function foreach(array as (element, [index])
 //function foreach_array(array, func) { 
 //    var size = array_length(array);
 //	ttt = method(self, func);
@@ -13,6 +13,7 @@
 //		}
 //	}
 //}
+
 ////var arr = [0, 1, 2];
 ////var m = 2;
 ////foreach(arr as (ind, val) 
@@ -88,4 +89,4 @@
 //        func(element, name, i);
 //    }
 //}
-#endregion
+//#endregion

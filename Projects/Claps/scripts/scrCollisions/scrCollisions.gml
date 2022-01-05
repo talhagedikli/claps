@@ -28,7 +28,7 @@ function check_collisions_classic(_motion) {
 }
 
 
-function check_collisions_pixel_perfect(_object = objBlock, _motion) { /// @description the pixel perfect collisions
+function check_collisions_pixel_perfect(_object = objBlock, _motion, _applyspd = true) { /// @description the pixel perfect collisions
 
 	//I think this is better calculation for single mask
 	var sprite_bbox_top		= sprite_get_bbox_top(sprite_index)		- sprite_get_yoffset(sprite_index);
@@ -37,7 +37,7 @@ function check_collisions_pixel_perfect(_object = objBlock, _motion) { /// @desc
 	var sprite_bbox_left	= sprite_get_bbox_left(sprite_index)	- sprite_get_xoffset(sprite_index);
 
 	//Applying horizontal speed if there is no collision with block
-	x += _motion.x;
+	if (_applyspd) x += _motion.x;
 	//Horizontal collisions
 	if place_meeting(x + sign(_motion.x), y, _object) {
 		var wall = instance_place(x + sign(_motion.x), y, _object);
@@ -53,7 +53,7 @@ function check_collisions_pixel_perfect(_object = objBlock, _motion) { /// @desc
 	}
 
 	//Applying vertical speed if there is no collision with block
-	y += _motion.y;
+	if (_applyspd) y += _motion.y;
 	//Vertical collisions
 	if place_meeting(x, y + sign(_motion.y), _object) {
 		var wall = instance_place(x, y + sign(_motion.y), _object);
